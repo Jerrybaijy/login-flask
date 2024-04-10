@@ -43,12 +43,12 @@ def register():
     password = data.get('password')
 
     if not username or not password:
-        return jsonify({'error': '用户名或密码不能为空'})
+        return jsonify({'message': '用户名或密码不能为空'})
 
     users = get_data()
     for user in users:
         if user['username'] == username:
-            return jsonify({'error': '用户名已存在'})
+            return jsonify({'message': '用户名已存在'})
 
     conn = conn_mysql()
     cursor = conn.cursor(cursor=DictCursor)
@@ -67,7 +67,7 @@ def login():
     password = data.get('password')
 
     if not username or not password:
-        return jsonify({'error': '用户名或密码不能为空'})
+        return jsonify({'message': '用户名或密码不能为空'})
 
     users = get_data()
     # print(users)
