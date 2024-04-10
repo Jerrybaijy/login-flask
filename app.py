@@ -70,11 +70,12 @@ def login():
         return jsonify({'error': '用户名或密码不能为空'})
 
     users = get_data()
+    # print(users)
     for user in users:
-        if user['username'] == username and user['password'] == password:
+        if username == user['username'] and password == user['password']:
             return jsonify({'message': '登录成功', 'user': user})
 
-    return jsonify({'error': '用户名或密码错误'})
+    return jsonify({'message': '用户名或密码错误'})
 
 
 # 查看用户信息
